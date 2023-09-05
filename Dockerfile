@@ -1,4 +1,5 @@
-FROM registry.access.redhat.com/ubi8/ubi:latest
+FROM nginx:alpine
+COPY . /usr/share/nginx/html
 
 MAINTAINER support@initd.it.co.za
 
