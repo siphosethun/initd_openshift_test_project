@@ -32,3 +32,52 @@ fi
 chmod +x start_nfs.sh
 
 */5 * * * * /home/YOU/start_nfs.sh
+
+
+#!/bin/bash
+
+# Define NFS server and path
+NFS_SERVER="nfs-server-ip-or-hostname"
+NFS_PATH="/path/to/nfs/share"
+
+# Mount the NFS share
+mount -t nfs $NFS_SERVER:$NFS_PATH /mnt/nfs
+
+# Check if the mount was successful
+if [ $? -eq 0 ]; then
+  echo "NFS share mounted successfully."
+  
+  # Start your service here
+  # For example, replace 'your-service' with the actual service you want to start.
+  systemctl start your-service
+  
+  # Check if the service started successfully
+  if systemctl is-active --quiet your-service; then
+    echo "Service started successfully."
+  else
+    echo "Failed to start the service."
+  fi
+else
+  echo "Failed to mount NFS share."
+fi
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
